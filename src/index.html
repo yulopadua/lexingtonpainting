@@ -1,0 +1,304 @@
+---
+title: 'Lexington Painting, Inc. - Lexington Painting | Home'
+description: 'Sharing my love and passion as a painting contractor for satisfying customers with every brush stroke at a time. Lexington Painting and our team strive for 100% customers satisfaction guaranteed at all times.'
+preloadImg: '/assets/images/company.jpg'
+permalink: '/'
+tags: 'sitemap' # Sitemap will use all pages in content/, due to content.json. As index.html is not included in content/ we need to manually add the sitemap tag to this page (only).
+eleventyNavigation:
+  key: Home
+  order: 100
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/local.css"/>
+    <link rel="stylesheet" href="/assets/css/critical.css"/>
+
+    <!-- Script for Netlify Identity -->
+    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script defer>
+        if (window.netlifyIdentity) {
+            window
+                .netlifyIdentity
+                .on('init', (user) => {
+                    if (!user) {
+                        window
+                            .netlifyIdentity
+                            .on('login', () => {
+                                document.location.href = '/admin/';
+                            });
+                    }
+                });
+        }
+    </script>
+
+    <!-- JSON Schema Markup -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "LocalBusiness",
+            "name": "{{ client.name }}",
+            {% if preloadImg %}"image": "{{ preloadImg }}",{% endif %}
+            {% if client.phoneFormatted %}"telephone": "{{ client.phoneFormatted }}",{% endif %}
+            {% if client.email %}"email": "{{ client.email }}",{% endif %}
+            {% if client.address %}
+                "address": {
+                    "@type": "PostalAddress"{% if client.address.lineOne %},
+                        "streetAddress": "{{ client.address.lineOne }}{% if client.address.lineTwo %}, {{ client.address.lineTwo }}{% endif %}"
+                    {% endif %}
+                    {% if client.address.city %},
+                        "addressLocality": "{{ client.address.city }}"
+                    {% endif %}
+                    {% if client.address.state %},
+                        "addressRegion": "{{ client.address.state }}"
+                    {% endif %}
+                    {% if client.address.zip %},
+                        "postalCode": "{{ client.address.zip }}"
+                    {% endif %}
+                    {% if client.address.country %},
+                        "addressCountry": "{{ client.address.country }}"
+                    {% endif %}
+                },
+            {% endif %}
+            {% if client.domain and page.url %}"url": "{{ client.domain }}{{ page.url }}",{% endif %}
+            {% if client.socials %}
+                "sameAs": [{% for platform, url in client.socials %}
+                        {% if not loop.first %},{% endif %}
+                        "{{ url }}"
+                    {% endfor %}]
+            {% endif %}
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="hero-229">
+        <div class="cs-container">
+            <div class="cs-flex-group">
+                <h1 class="cs-title">LEXINGTON PAINTING INC.</h1>
+                <p class="cs-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam molestiae commodi nostrum iusto non officia laudantium corrupti rem temporibus ipsam, pariatur laboriosam possimus soluta doloribus delectus facere! Molestiae, ad saepe.
+                </p>
+                <div class="cs-button-group">
+                    <a href="" class="cs-button-solid cs-button">Explore More</a>
+                    <a href="" class="cs-button-transparent cs-button">
+                        <img class="cs-img" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Hero/play.svg" alt="play icon" width="17" height="17">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Image -->
+        <picture class="cs-picture">
+            <source media="(max-width: 600px)" srcset="/assets/images/company.webp">
+            <source media="(min-width: 601px)" srcset="/assets/images/company.jpg">
+            <img decoding="async" src="/assets/images/company.jpg" alt="company" width="2250" height="1500" aria-hidden="true">
+        </picture>
+    </section>
+    
+    <!-- ============================================ -->
+    <!--                   Video                      -->
+    <!-- ============================================ -->
+
+    <section id="video-571">
+        <div class="cs-container">
+            <iframe class="cs-video" width="560" height="315" src="https://www.youtube.com/embed/Ari4MmUzVf0?si=A9fGbQQkItuiWz-W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="cs-content">
+                <p class="cs-text">
+                    If you're planning your next residential or commercial makeover and are in need of reliable Painters, contact Lexington Painting;  located in <a href="https://nydc.com/" class="cs-text-link" target="_blank">New York Design Center</a>, in the heart of NYC with over 39 years of experience.
+                    <br><br>
+                    We offer comprehensive residential and commercial painting services.  Spiro Markozanis, the owner of Lexington Painting, is a fully licensed and insured professional.  He will take the stress and worry out of your next painting project.   There is a working supervisor on each job site.  A full job inspection is conducted with the Customer to ensure 100% customer satisfaction.
+                    <br><br>
+                    We pride ourselves on the number of repeat customers year after year.  Providing our clients with the highest quality artistry and meticulous attention to detail.  Our strong work ethics and pursuit of perfection has earned us a reputation of excellence among our clients.
+                    <br><br>
+                    Your satisfaction is our primary objective. We won't consider the job done unless you're 100% satisfied with the finished product.
+                    <br><br>
+                    We  pre-screen and background check all our staff so you can feel confident about the people in your space.
+                    <br><br>
+                    Call us today for your Free Estimate!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Services                    -->
+    <!-- ============================================ -->
+
+    <section id="services-1644">
+        <div class="cs-container">
+            <ul class="cs-card-group">
+                <li class="cs-item">
+                    <div class="cs-image-group">
+                        <img class="cs-icon" loading="lazy" decoding="async"
+                                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/checkmark-circle-gold.svg" alt="icon" width="48"
+                                height="48" aria-hidden="true">
+                    </div>
+                    <div class="cs-flex">
+                        <h2 class="cs-h2">Preparation</h2>
+                        <p class="cs-item-text">
+                            All furniture, items, and floors are covered.  Walls and ceilings are inspected for cracks, filled, and sanded.  All baseboards, windows, and frames are professionally taped as needed.
+                        </p>
+                    </div>
+                </li>
+                <li class="cs-item">
+                    <div class="cs-image-group">
+                        <img class="cs-icon" loading="lazy" decoding="async"
+                                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/dashboard-gold.svg" alt="icon" width="48"
+                                height="48" aria-hidden="true">
+                    </div>
+                    <div class="cs-flex">
+                        <h2 class="cs-h2">Painting</h2>
+                        <p class="cs-item-text">
+                            Customer specifications are fully detailed and outlined in a professional quote or proposal.
+                        </p>
+                    </div>
+                </li>
+                <li class="cs-item">
+                    <div class="cs-image-group">
+                        <img class="cs-icon" loading="lazy" decoding="async"
+                                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/Lifebuoy-gold.svg" alt="icon" width="48"
+                                height="48" aria-hidden="true">
+                    </div>
+                    <div class="cs-flex">
+                        <h2 class="cs-h2">Cleaning</h2>
+                        <p class="cs-item-text">
+                            Rooms are returned to their prior state.
+                        </p>
+                    </div>
+                </li>
+                <li class="cs-item">
+                    <div class="cs-image-group">
+                        <img class="cs-icon" loading="lazy" decoding="async"
+                                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/Like-gold.svg" alt="icon" width="48"
+                                height="48" aria-hidden="true">
+                    </div>
+                    <div class="cs-flex">
+                        <h2 class="cs-h2">Inspect</h2>
+                        <p class="cs-item-text">
+                            Post-painting inspection of all work is conducted to assure the customer is completely 100% satisfied.  We don't consider the job done unless you're 100% happy with the outcome.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>                            
+    </section>
+                               
+    <!-- ============================================ -->
+    <!--                   Gallery                    -->
+    <!-- ============================================ -->
+
+    <section id="gallery-45">
+        <div class="cs-container">
+            <ul class="cs-image-group">
+                <!-- Image 1 -->
+                <li class="cs-item">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="/assets/images/gallery/gallery-1.webp">
+                        <source media="(min-width: 601px)" srcset="/assets/images/gallery/gallery-1.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/images/gallery/gallery-1.jpg" alt="restoration" width="346" height="346">
+                    </picture>
+                </li>
+                <!-- Image 2 -->
+                <li class="cs-item">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="/assets/images/gallery/gallery-2.webp">
+                        <source media="(min-width: 601px)" srcset="/assets/images/gallery/gallery-2.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/images/gallery/gallery-2.jpg" alt="restoration" width="346" height="346">
+                    </picture>
+                </li>
+                <!-- Image 3 -->
+                <li class="cs-item">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="/assets/images/gallery/gallery-3.webp">
+                        <source media="(min-width: 601px)" srcset="/assets/images/gallery/gallery-3.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/images/gallery/gallery-3.jpg" alt="restoration" width="346" height="346">
+                    </picture>
+                </li>
+                <!-- Image 4 -->
+                <li class="cs-item">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="/assets/images/gallery/gallery-4.webp">
+                        <source media="(min-width: 601px)" srcset="/assets/images/gallery/gallery-4.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/images/gallery/gallery-4.jpg" alt="restoration" width="346" height="346">
+                    </picture>
+                </li>
+                <!-- Image 5 -->
+                <li class="cs-item">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="/assets/images/gallery/gallery-5.webp">
+                        <source media="(min-width: 601px)" srcset="/assets/images/gallery/gallery-5.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/images/gallery/gallery-5.jpg" alt="restoration" width="346" height="346">
+                    </picture>
+                </li>
+                <!-- Image 6 -->
+                <li class="cs-item">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="/assets/images/gallery/gallery-6.webp">
+                        <source media="(min-width: 601px)" srcset="/assets/images/gallery/gallery-6.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/images/gallery/gallery-6.jpg" alt="restoration" width="346" height="346">
+                    </picture>
+                </li>
+                <!-- Image 7 -->
+                <li class="cs-item">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="/assets/images/gallery/gallery-7.webp">
+                        <source media="(min-width: 601px)" srcset="/assets/images/gallery/gallery-7.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/images/gallery/gallery-7.jpg" alt="restoration" width="346" height="346">
+                    </picture>
+                </li>
+                <!-- Image 8 -->
+                <li class="cs-item">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="/assets/images/gallery/gallery-8.webp">
+                        <source media="(min-width: 601px)" srcset="/assets/images/gallery/gallery-8.jpg">
+                        <img loading="lazy" decoding="async" src="/assets/images/gallery/gallery-8.jpg" alt="restoration" width="346" height="346">
+                    </picture>
+                </li>
+            </ul>
+            <a href="" class="cs-button-solid">View Full Gallery</a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Gallery                    -->
+    <!-- ============================================ -->
+
+    <section id="gallery-379">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h2 class="cs-title">Fully Insured & Licensed EPA Lead Paint Certified</h2>
+            </div>
+            <div class="cs-gallery">
+                <!--Picture 1-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="/assets/images/epa.webp">
+                    <source media="(min-width: 601px)" srcset="/assets/images/epa.jpg">
+                    <img loading="lazy" decoding="async" src="/assets/images/epa.jpg" alt="epa" width="305" height="400">
+                </picture>
+                <!--Picture 2-->
+                <picture class="cs-image">
+                    <source media="(max-width: 600px)" srcset="/assets/images/guarantee.webp">
+                    <source media="(min-width: 601px)" srcset="/assets/images/guarantee.jpg">
+                    <img loading="lazy" decoding="async" src="/assets/images/guarantee.jpg" alt="guarantee" width="305" height="400">
+                </picture>
+                <!--Picture 3-->
+                <picture class="cs-image">
+                    <a href="https://www.yelp.com/biz/lexington-painting-new-york-2" target="_blank">
+                        <source media="(max-width: 600px)" srcset="/assets/images/yelp.webp">
+                        <source media="(min-width: 601px)" srcset="/assets/images/yelp.png">
+                        <img loading="lazy" decoding="async" src="/assets/images/yelp.png" alt="yelp" width="305" height="400">
+                    </a>
+                </picture>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
